@@ -14,6 +14,7 @@ var todos: [Todo] = [
     Todo(id: "3", image: "phone-selected", title: "3, 打电话", date: dateFromString("2015-06-16")!),
     Todo(id: "4", image: "travel-selected", title: "4, 旅行", date: dateFromString("2015-06-18")!)
 ]
+var filteredTodos: [Todo] = []
 
 func dateFromString(string: String) ->NSDate? {
     let dateFormatter = NSDateFormatter()
@@ -23,12 +24,24 @@ func dateFromString(string: String) ->NSDate? {
 
 
 
-class ViewController: UITableViewController {
-
+class ViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
+    var searchController: UISearchController = UISearchController(searchResultsController: nil)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem()
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        
+        searchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = searchController.searchBar
+        self.definesPresentationContext = false
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,12 +50,21 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count
+        if (searchController.active) {
+            return filteredTodos.count
+        } else {
+            return todos.count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("todoCell") as! UITableViewCell
-        let todo = todos[indexPath.row]
+        var todo: Todo
+        if (searchController.active) {
+            todo = filteredTodos[indexPath.row] as Todo
+        } else {
+            todo = todos[indexPath.row] as Todo
+        }
         
         var image = cell.viewWithTag(101) as! UIImageView
         var title = cell.viewWithTag(102) as! UILabel
@@ -64,6 +86,9 @@ class ViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (searchController.active) {
+            searchController.active = false
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "todoDetailSegue" {
@@ -105,6 +130,19 @@ class ViewController: UITableViewController {
             todos.removeAtIndex(indexPath.row)
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
+    }
+    
+    
+    
+    // from UISearchResultsUpdating
+    // update search result
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchText = searchController.searchBar.text
+        filteredTodos = todos.filter({(todo: Todo) -> Bool
+            in
+            return searchText == "" || todo.title.rangeOfString(searchText) != nil
+        })
+        self.tableView.reloadData()
     }
 }
 
