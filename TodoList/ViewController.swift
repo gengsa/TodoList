@@ -59,7 +59,26 @@ class ViewController: UITableViewController {
     }
     
     
+    
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "todoDetailSegue" {
+            var vc = segue.destinationViewController as! TodoDetailViewController
+            var indexPath = tableView.indexPathForSelectedRow()
+            if let index = indexPath {
+                vc.todo = todos[index.row]
+            }
+        }
+    }
+    
 
+    // Unwind Segue
+    @IBAction func close(segue: UIStoryboardSegue) {
+        tableView.reloadData()
+    }
 
 }
 

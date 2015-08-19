@@ -35,6 +35,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="0y7-2m-HfO" kind="push" identifier="todoDetailSegue" id="8X9-oH-bJU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -47,6 +50,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ud0-Er-0yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="637" y="247"/>
+        </scene>
+        <!--Todo Detail View Controller-->
+        <scene sceneID="a6A-Ix-nu6">
+            <objects>
+                <viewController id="0y7-2m-HfO" customClass="TodoDetailViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bKz-EE-ky7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Oa7-o8-VBQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rl9-K9-1JN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="todo标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-13-UM5">
+                                <rect key="frame" x="16" y="192" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Wf-Ll-2uz">
+                                <rect key="frame" x="94" y="183" width="146" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fus-Xh-JQh">
+                                <rect key="frame" x="0.0" y="238" width="267" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="461658230.52123201">
+                                    <!--2015-08-19 06:23:50 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riq-IR-1Uc">
+                                <rect key="frame" x="118" y="413" width="30" height="30"/>
+                                <state key="normal" title="确定">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okTapped:" destination="0y7-2m-HfO" eventType="touchUpInside" id="yol-QK-GA9"/>
+                                    <segue destination="mCA-E8-4HW" kind="unwind" unwindAction="close:" id="aQI-Wf-p3x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gff-1b-zhd">
+                                <rect key="frame" x="16" y="120" width="50" height="50"/>
+                                <state key="normal" image="child">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="child-selected"/>
+                                <connections>
+                                    <action selector="imageTapped:" destination="0y7-2m-HfO" eventType="touchUpInside" id="jhe-OS-4Ia"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-3Z-Tu8">
+                                <rect key="frame" x="74" y="120" width="50" height="50"/>
+                                <state key="normal" image="phone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="phone-selected"/>
+                                <connections>
+                                    <action selector="imageTapped:" destination="0y7-2m-HfO" eventType="touchUpInside" id="2df-ig-YGJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcC-vA-cX4">
+                                <rect key="frame" x="132" y="120" width="50" height="50"/>
+                                <state key="normal" image="shopping-cart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="shopping-cart-selected"/>
+                                <connections>
+                                    <action selector="imageTapped:" destination="0y7-2m-HfO" eventType="touchUpInside" id="ySb-iL-7gs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0t-92-u6L">
+                                <rect key="frame" x="190" y="120" width="50" height="50"/>
+                                <state key="normal" image="travel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="travel-selected"/>
+                                <connections>
+                                    <action selector="imageTapped:" destination="0y7-2m-HfO" eventType="touchUpInside" id="aLh-Qh-RXe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NBQ-ZR-UA3"/>
+                    <connections>
+                        <outlet property="childButton" destination="gff-1b-zhd" id="9Wr-zz-0em"/>
+                        <outlet property="phoneButton" destination="3Ss-3Z-Tu8" id="l3P-RG-MCX"/>
+                        <outlet property="shoppingCartButton" destination="LcC-vA-cX4" id="MPu-I6-z1b"/>
+                        <outlet property="todoDate" destination="fus-Xh-JQh" id="gZJ-Qs-KUY"/>
+                        <outlet property="todoItem" destination="3Wf-Ll-2uz" id="xXY-6E-gfG"/>
+                        <outlet property="travelButton" destination="b0t-92-u6L" id="F5X-Q5-q4M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vm9-Ib-N4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mCA-E8-4HW" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1348" y="247"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="86z-y4-eaD">
@@ -66,6 +166,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="child" width="50" height="50"/>
         <image name="child-selected" width="50" height="50"/>
+        <image name="phone" width="50" height="50"/>
+        <image name="phone-selected" width="50" height="50"/>
+        <image name="shopping-cart" width="50" height="50"/>
+        <image name="shopping-cart-selected" width="50" height="50"/>
+        <image name="travel" width="50" height="50"/>
+        <image name="travel-selected" width="50" height="50"/>
     </resources>
 </document>
