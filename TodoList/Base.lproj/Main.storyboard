@@ -45,7 +45,13 @@
                             <outlet property="delegate" destination="rNy-TV-u98" id="hOn-vY-lRp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TodoList" id="2Uz-GK-xh9"/>
+                    <navigationItem key="navigationItem" title="TodoList" id="2Uz-GK-xh9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SRl-DI-LWs">
+                            <connections>
+                                <segue destination="0y7-2m-HfO" kind="push" id="sGU-gK-6QZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ud0-Er-0yi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,4 +181,7 @@
         <image name="travel" width="50" height="50"/>
         <image name="travel-selected" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sGU-gK-6QZ"/>
+    </inferredMetricsTieBreakers>
 </document>

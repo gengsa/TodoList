@@ -25,21 +25,26 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate{
         
         // Do any additional setup after loading the view.
         todoItem.delegate = self
-        
-        if todo?.image == "child-selected"{
-            childButton.selected = true
+        if (todo == nil) {
+            childButton.selected = true;
+            navigationController?.title = "新建 todo"
+        } else {
+            if todo?.image == "child-selected"{
+                childButton.selected = true
+            }
+            else if todo?.image == "phone-selected"{
+                phoneButton.selected = true
+            }
+            else if todo?.image == "shopping-cart-selected"{
+                shoppingCartButton.selected = true
+            }
+            else if todo?.image == "travel-selected"{
+                travelButton.selected = true
+            }
+            todoItem.text = todo?.title
+            todoDate.setDate((todo?.date)!, animated: false)
+            
         }
-        else if todo?.image == "phone-selected"{
-            phoneButton.selected = true
-        }
-        else if todo?.image == "shopping-cart-selected"{
-            shoppingCartButton.selected = true
-        }
-        else if todo?.image == "travel-selected"{
-            travelButton.selected = true
-        }
-        todoItem.text = todo?.title
-        todoDate.setDate((todo?.date)!, animated: false)
         
         
     }
@@ -88,11 +93,18 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate{
         } else if (travelButton.selected) {
             image = "travel-selected"
         }
+        if (todo == nil) {
+            // New todo
+            let uuid = NSUUID().UUIDString // Spport Xcode 6.1
+            self.todo = Todo(id: uuid, image: image, title: todoItem.text, date: todoDate.date)
+            todos.append(todo!)
+        } else {
+            todo?.image = image
+            todo?.title = todoItem.text
+            todo?.date = todoDate.date
+
+        }
         
-        
-        todo?.image = image
-        todo?.title = todoItem.text
-        todo?.date = todoDate.date
         
 
         
