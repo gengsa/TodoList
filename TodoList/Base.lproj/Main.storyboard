@@ -21,13 +21,13 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="102" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e3f-59-60Y">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="103" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6dD-3e-MQ4">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" image="child-selected" id="UKv-nt-mv9">
@@ -72,7 +72,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="todo标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqq-13-UM5">
                                 <rect key="frame" x="16" y="192" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Wf-Ll-2uz">
@@ -93,7 +93,7 @@
                                 </state>
                                 <connections>
                                     <action selector="okTapped:" destination="0y7-2m-HfO" eventType="touchUpInside" id="yol-QK-GA9"/>
-                                    <segue destination="mCA-E8-4HW" kind="unwind" unwindAction="close:" id="aQI-Wf-p3x"/>
+                                    <segue destination="mCA-E8-4HW" kind="unwind" unwindAction="unwindToList:" id="W54-us-b8O"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gff-1b-zhd">
@@ -182,6 +182,6 @@
         <image name="travel-selected" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sGU-gK-6QZ"/>
+        <segue reference="8X9-oH-bJU"/>
     </inferredMetricsTieBreakers>
 </document>

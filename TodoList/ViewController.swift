@@ -102,7 +102,7 @@ class ViewController: UITableViewController, UISearchBarDelegate, UISearchResult
     
 
     // Unwind Segue
-    @IBAction func close(segue: UIStoryboardSegue) {
+    @IBAction func unwindToList(segue: UIStoryboardSegue) {
         tableView.reloadData()
     }
 
